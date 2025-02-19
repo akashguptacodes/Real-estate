@@ -1,0 +1,134 @@
+.chat {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .messages {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: scroll;
+
+    h1 {
+      font-weight: 300;
+    }
+
+    .message {
+      background-color: white;
+      padding: 10px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      cursor: pointer;
+
+      img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      span {
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+      p{
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  .chatBox {
+    flex: 1;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .top {
+      background-color: #f7c14b85;
+      padding: 20px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .user {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        img {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+      .close {
+        cursor: pointer;
+      }
+    }
+    .center {
+      height: 220px;
+      overflow: scroll;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .chatMessage{
+        width: 50%;
+
+        &.own{
+          align-self: flex-end;
+          text-align: right;
+        }
+
+        p{
+          font-size: 14px;
+        }
+
+        span{
+          font-size: 10px;
+          background-color: #f7c14b39;
+          padding: 2px;
+          border-radius: 5px;
+        }
+      }
+    }
+    .bottom {
+      border-top: 2px solid #f7c14b85;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      // gap: 0.5rem;
+      textarea{
+        width: 75%;
+        height: 100%;
+        border: none;
+      }
+      .mike{
+        // flex:1;
+        background-color: #f7c14b85;
+        height: 100%;
+        width: 10%;
+        border-radius: 50%;
+        border: 1px solid rgb(122, 122, 221);
+        cursor: pointer;
+      }
+
+      button{
+        // flex:1;
+        background-color: #f7c14b85;
+        height: 100%;
+        width: 10%;
+        border: 1px solid rgb(122, 122, 221);
+        cursor: pointer;
+      }
+    }
+  }
+}

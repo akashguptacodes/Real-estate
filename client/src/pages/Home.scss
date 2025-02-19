@@ -1,0 +1,88 @@
+@import '../responsive.scss';
+
+
+.homePage{
+    display: flex;
+    height: 100%;
+
+    .textContainer{
+        flex:3;
+
+        .wrapper{
+            padding-right: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            height: 100%;
+
+            @include md{
+                padding: 0;
+            }
+            @include sm{
+                justify-content: flex-start;
+            }
+
+            .title{
+                font-size: 44px;
+                color: rgb(33, 32, 32);
+                @include lg{
+                    font-size: 30px;
+                }
+                .getLine{
+                    font-size: 44px;
+                    color: #e57331;
+                }
+            }
+
+            .boxes{
+                display: flex;
+                margin-top: 4rem;
+                justify-content: space-between;
+
+                @include sm{
+                    display: none;
+                }
+
+
+                h1{
+                    font-size: 28px;
+                    font-weight: 600;
+
+                    @include lg{
+                        font-size: 20px;
+                    }
+                }
+                h2{
+                    font-size: 1rem;
+                    font-weight: 200;
+                }
+            }
+        }
+
+    }
+    .imgContainer{
+        flex:  2;
+        background-color: #fcf5f3;
+        position: relative;
+        display: flex;
+        align-items: center;
+        
+
+        @include md{
+            display: none;
+        }
+
+        img{
+            width: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+
+
+            @include lg{
+                width: 100%;
+
+            }
+        }
+    }
+}
