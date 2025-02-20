@@ -19,12 +19,12 @@ function ProfileUpdatePage() {
     const newpassword = formData.get('newpassword');
 
     try{
-      const res = await apiRequest.put(`/user/updateUser/changepassword/${currentUser._id}`,{
+      const res = await apiRequest.put(`/api/v1/user/updateUser/changepassword/${currentUser._id}`,{
         oldpassword,
         newpassword
       })
     //   updateUser(res.data.data);
-      const res2 = await apiRequest.post('/auth/logout');
+      const res2 = await apiRequest.post('/api/v1/auth/logout');
       updateUser(null);
       toast.success('Password Updated')
       navigate('/profile');

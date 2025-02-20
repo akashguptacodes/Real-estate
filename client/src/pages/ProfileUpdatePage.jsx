@@ -29,7 +29,7 @@ function ProfileUpdatePage() {
   
     try {
       // Send FormData with headers
-      const res = await apiRequest.put(`/user/updateUser/${currentUser._id}`, formData, {
+      const res = await apiRequest.put(`/api/v1/user/updateUser/${currentUser._id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

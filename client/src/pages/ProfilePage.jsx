@@ -20,7 +20,7 @@ function ProfilePage() {
 
   const logoutHandler = async () => {
     try{
-      const res = await apiRequest.post('/auth/logout');
+      const res = await apiRequest.post('/api/v1/auth/logout');
       console.log(apiRequest);
       
       updateUser(null);
@@ -38,7 +38,7 @@ function ProfilePage() {
         const user = await JSON.parse(localStorage.getItem("user"));
         const id = await user?._id;
         
-        const res = await apiRequest.get(`/posts/getprofileposts/${id}`);
+        const res = await apiRequest.get(`/api/v1/posts/getprofileposts/${id}`);
         setMyPosts(res?.data?.posts);
       }
       catch{
@@ -49,7 +49,7 @@ function ProfilePage() {
 
     const fetchSavedPosts = async () => {
       try{
-        const savedPosts = await apiRequest.get('/posts/getsavedposts');
+        const savedPosts = await apiRequest.get('/api/v1/posts/getsavedposts');
         setMysavedposts(savedPosts?.data?.savedPosts);
       }
       catch(error){
@@ -60,7 +60,7 @@ function ProfilePage() {
 
     const fetchMyChats = async () => {
       try{
-        const res = await apiRequest.get('/chats/getChats');
+        const res = await apiRequest.get('/api/v1/chats/getChats');
         console.log(res);
         setChats(res?.data?.chats);
       }

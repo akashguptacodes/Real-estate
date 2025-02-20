@@ -22,7 +22,7 @@ const Card = ({post}) => {
     try{
       setSaved(!saved);
       if(currentUser){
-        const savePost = await apiRequest.post(`/user/savepost/${post?._id}`);
+        const savePost = await apiRequest.post(`api/v1/user/savepost/${post?._id}`);
         console.log(savePost);
         window.location.reload()
       }
@@ -38,7 +38,7 @@ const Card = ({post}) => {
   const checkChatExist = async () => {
     try {
       const receiverId = await post?.user;
-      const res = await apiRequest.get(`/chats/checkchatexistance/${receiverId}`);
+      const res = await apiRequest.get(`api/v1/chats/checkchatexistance/${receiverId}`);
       console.log(res?.data?.success);
       friend = await res?.data?.success;
       addChat();
@@ -52,7 +52,7 @@ const Card = ({post}) => {
       if(currentUser){
         console.log(friend);
         if(!friend){
-          const addNewChat = await apiRequest.post('/chats/addchat',{
+          const addNewChat = await apiRequest.post('/api/v1/chats/addchat',{
             receiverId: post?.user,
           });
           console.log(addNewChat);
@@ -76,7 +76,7 @@ const Card = ({post}) => {
   useEffect(()=>{
     const fetchPost = async () => {
       try{
-        const res = await apiRequest.get(`/posts/getpost/${post?._id}`);
+        const res = await apiRequest.get(`/api/v1/posts/getpost/${post?._id}`);
         setSaved(res?.data?.post?.isSaved)
       }
       catch(error){

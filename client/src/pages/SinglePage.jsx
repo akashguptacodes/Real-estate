@@ -31,7 +31,7 @@ function SinglePage() {
 
   const fetchPost = async () => {
     try{
-      const res = await apiRequest.get(`/posts/getpost/${unique}`);
+      const res = await apiRequest.get(`/api/v1/posts/getpost/${unique}`);
       console.log(res);
       const showPost = await res?.data?.post?._doc;
       const showPostDetails = await res?.data?.post?._doc?.postDetails;
@@ -48,7 +48,7 @@ function SinglePage() {
     try{
       setSaved(!saved);
       if(currentUser){
-        const savePost = await apiRequest.post(`/user/savepost/${post[0]?._id}`);
+        const savePost = await apiRequest.post(`/api/v1/user/savepost/${post[0]?._id}`);
         console.log(savePost);
       }
       else{

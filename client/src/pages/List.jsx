@@ -55,7 +55,7 @@ function ListPage() {
       try {
         setLoading(true);
         console.log("Fetching posts with query:", query);
-        const res = await apiRequest.post("/posts/getposts", query);
+        const res = await apiRequest.post("/api/v1/posts/getposts", query);
         console.log("Response:", res?.data?.posts);
         setPosts(res?.data?.posts || []);
       } catch (error) {

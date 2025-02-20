@@ -34,7 +34,7 @@ function Register() {
         toast.error('Passwords do not match');
         return
       }
-      const res = await apiRequest.post("/auth/register",{
+      const res = await apiRequest.post("/api/v1/auth/register",{
         userName,email,password,firstName,lastName,confirmPassword,contactNo
       })
       toast.success('New user created successfully')

@@ -51,7 +51,7 @@ function Chat({chats}) {
 
   const handleOpenChat = async (chatId, receiver) => {
     try {
-      const res = await apiRequest.get(`/chats/getchat/${chatId}`);
+      const res = await apiRequest.get(`/api/v1/chats/getchat/${chatId}`);
       if (res?.data?.chat?.seenBy.includes(currentUser._id)) {
         decrease();
       }
@@ -70,7 +70,7 @@ function Chat({chats}) {
     const inptext = formData.get("inptext");
     if (!inptext) return;
     try {
-      const res = await apiRequest.post(`/messages/addmessage/${chat._id}`, { inptext });
+      const res = await apiRequest.post(`/api/v1/messages/addmessage/${chat._id}`, { inptext });
       setChat((prev) => ({ ...prev, messages: [...prev.messages, res?.data] }));
       console.log(res);
 
@@ -89,7 +89,7 @@ function Chat({chats}) {
   useEffect(() => {
     const read = async () => {
       try {
-        await apiRequest.put(`/chats/readchat/${chat._id}`);
+        await apiRequest.put(`/api/v1/chats/readchat/${chat._id}`);
       }
       catch (error) {
         console.log(error);

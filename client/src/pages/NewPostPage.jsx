@@ -101,7 +101,7 @@ function NewPostPage() {
     });
   
     try {
-      const res = await apiRequest.post("/posts/addpost", formData, {
+      const res = await apiRequest.post("/api/v1/posts/addpost", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
