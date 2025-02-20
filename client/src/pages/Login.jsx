@@ -30,8 +30,7 @@ function Login() {
         email,password
       })
       console.log(res);
-      
-      updateUser(res.data.user)
+      updateUser(res?.data?.user)
       toast.success('Logged in successfully')
       navigate('/');
     }catch(error){
