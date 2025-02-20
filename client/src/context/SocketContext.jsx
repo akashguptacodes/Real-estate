@@ -9,7 +9,7 @@ export const SocketContextProvider = ({ children }) => {
     const [socket, setSocket] = useState(null);
 
     useEffect(() => {
-        setSocket(io("http://localhost:5000"))
+        setSocket(io(import.meta.env.VITE_BACKEND_URL))
     }, []);
 
     useEffect(()=>{
