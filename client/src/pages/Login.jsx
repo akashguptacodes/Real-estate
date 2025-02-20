@@ -28,7 +28,8 @@ function Login() {
     try{
       const res = await apiRequest.post("/api/v1/auth/login",{
         email,password
-      })
+      },
+      {withCredentials: true})
       console.log(res);
       updateUser(res?.data?.user)
       toast.success('Logged in successfully')
