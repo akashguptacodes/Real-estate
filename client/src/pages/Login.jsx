@@ -37,7 +37,7 @@ function Login() {
     }catch(error){
       console.log(error);
       toast.error('Invalid email or password')
-      setError(error.response.data.message);
+      setError(error?.response?.data?.message);
     }
     finally{
       setIsLoading(false);
