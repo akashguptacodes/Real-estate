@@ -9,7 +9,7 @@ export const SocketContextProvider = ({ children }) => {
     const [socket, setSocket] = useState(null);
 
     useEffect(() => {
-        setSocket(io(import.meta.env.VITE_BACKEND_URL))
+        setSocket(io(import.meta.env.VITE_SOCKET_URL))
     }, []);
 
     useEffect(()=>{
