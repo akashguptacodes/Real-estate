@@ -2,7 +2,7 @@ import { useNavigate, Link } from "react-router-dom";
 import apiRequest from "../apiRequest";
 import Chat from "../components/chat/Chat";
 import List from "../components/list/List";
-import "./profilePage.scss";
+import "./ProfilePage.scss";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { CgProfile } from "react-icons/cg";
@@ -21,6 +21,8 @@ function ProfilePage() {
   const logoutHandler = async () => {
     try{
       const res = await apiRequest.post('/auth/logout');
+      console.log(apiRequest);
+      
       updateUser(null);
       toast.success('Logged out successfully')
       navigate('/')

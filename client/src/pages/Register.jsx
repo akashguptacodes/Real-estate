@@ -1,4 +1,4 @@
-import "./register.scss";
+import "./Register.scss";
 import { Link, useNavigate } from "react-router-dom";
 import bg from '../assets/bg.png'
 import axios from "axios";

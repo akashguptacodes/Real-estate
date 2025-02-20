@@ -1,4 +1,4 @@
-import "./profileUpdatePage.scss";
+import "./ProfileUpdatePage.scss";
 import { useContext, useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import {AuthContext} from '../context/AuthContext';

@@ -1,7 +1,6 @@
 import "./SinglePage.scss";
 import Slider from "../components/slider/Slider";
 import Map from "../components/map/Map";
-import { singlePostData, userData } from "../Data";
 import pin from '../assets/pin.png'
 import utility from '../assets/utility.png'
 import petimage from '../assets/pet.png'

@@ -1,4 +1,4 @@
-import "./login.scss";
+import "./Login.scss";
 import { Link, useNavigate } from "react-router-dom";
 import bg from '../assets/bg.png'
 import { useContext, useState } from "react";
