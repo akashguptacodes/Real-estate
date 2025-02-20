@@ -5,7 +5,7 @@ dotenv.config();
 
 const io = new Server({
     cors: {
-        origin: '*',
+        origin: process.env.CLIENT_URL,
         methods: ["GET", "POST"],
         credentials: true,
     },
