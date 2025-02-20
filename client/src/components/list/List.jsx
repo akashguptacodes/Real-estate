@@ -8,7 +8,7 @@ function List({myposts,mysavedposts}){
     <div>
       {
         myposts?(
-          myposts?.map(post=>(
+          myposts?.map((post)=>(
             <motion.div
             variants={fadeIn('left', 0.2)}
             initial="hidden"
@@ -16,8 +16,9 @@ function List({myposts,mysavedposts}){
             viewport={{
                 once:false,
                 amount:0
-            }}>
-              <Card key={post?._id} post={post}></Card>
+            }}
+            key={post?._id}>
+              <Card post={post}></Card>
             </motion.div>
           ))
         ):(
@@ -29,8 +30,9 @@ function List({myposts,mysavedposts}){
             viewport={{
                 once:false,
                 amount:0
-            }}>
-              <Card key={post?._id} post={post?.postId}></Card>
+            }}
+            key={post?._id}>
+              <Card post={post?.postId}></Card>
             </motion.div>
           ))
         )
