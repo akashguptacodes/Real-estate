@@ -17,14 +17,14 @@ function Navbar() {
   return (
     <nav>
       <div className="left">
-        <a href="/" className="logo">
+        <Link to='/' className="logo">
         <IoHome fontSize="2rem"/>
           <span>SmartNest</span>
-        </a>
-        <a href="/">Home</a>
-        <a href="/">About</a>
-        <a href="/">Contact</a>
-        <a href="/">Agents</a>
+        </Link>
+        <Link to='/'>Home</Link>
+        <Link to='/'>About</Link>
+        <Link to='/'>Contact</Link>
+        <Link to='/'>Agents</Link>
       </div>
       <div className="right">
         {currentUser ? (
@@ -47,10 +47,10 @@ function Navbar() {
           </div>
         ) : (
           <>
-            <a href="/login" className="signin">Sign in</a>
-            <a href="/register" className="register">
+            <Link to='/login' className="signin">Sign in</Link>
+            <Link to='/register' className="register">
               Sign up
-            </a>
+            </Link>
           </>
         )}
         <div className="menuIcon">
@@ -61,12 +61,12 @@ function Navbar() {
           />
         </div>
         <div className={open ? "menu active" : "menu"}>
-          <a href="/">Home</a>
-          <a href="/">About</a>
-          <a href="/">Contact</a>
-          <a href="/">Agents</a>
-          <a href="/">Sign in</a>
-          <a href="/">Sign up</a>
+          <Link to='/'>Home</Link>
+          <Link to='/'>About</Link>
+          <Link to='/'>Contact</Link>
+          <Link to='/'>Agents</Link>
+          <Link to='/'>Sign in</Link>
+          <Link to='/'>Sign up</Link>
         </div>
       </div>
     </nav>
