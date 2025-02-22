@@ -1,24 +1,5 @@
-# Ignore environment files
-client/.env
-Server/.env
-socket/.env
+# Ignore node_modules folder
+node_modules/
 
-# Ignore node_modules in all subfolders
-client/node_modules/
-Server/node_modules/
-socket/node_modules/
-
-# Ignore build and dist folders in all subfolders
-client/dist/
-Server/dist/
-socket/dist/
-
-client/build/
-Server/build/
-socket/build/
-
-# Ignore system and editor-specific files
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
+# Ignore .env file in all directories
+.env

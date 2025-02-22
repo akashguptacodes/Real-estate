@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 require('dotenv').config();
 const cookieParser = require('cookie-parser')
@@ -43,11 +44,65 @@ app.use('/api/v1/posts', postsRoutes);
 app.use('/api/v1/chats',chatRoutes);
 app.use('/api/v1/messages',messageRoutes)
 
+// ==========Deployement===================
 
-app.get('/', (req,res) => {
-    res.send('Hello');
+const __dirname1 = path.resolve();
+// console.log(__dirname1);
+
+if (process.env.NODE_ENV === 'production') {
+
+    app.use(express.static(path.join(__dirname1, '/client/dist')));
+    app.get('*' , (req,res)=>{
+        res.sendFile(path.resolve(__dirname1, 'client','dist','index.html'));
+    });
+} else {
+    app.get('/', (req, res) => {
+        res.send('API is running');
+    })
+}
+
+// ==========Deployement===================
+
+ const server = app.listen(PORT, () => {
+    console.log(`App is running successfully on PORT ${PORT}`);
+})
+
+const io = require('socket.io')(server, {
+    pingTimeout: 60000,
+    cors: {
+        origin:'http://localhost:4000'
+    }
 });
 
-app.listen(PORT, () => {
-    console.log(`App is running successfully on PORT ${PORT}`);
+let onlineUser = [];
+
+const addUser = (userId, socketId) => {    
+    const userExists = onlineUser.find((user)=>user.userId === userId);
+    if(!userExists){
+        onlineUser.push({userId, socketId});
+    }
+}
+
+const removeUser = (socketId) => {
+    onlineUser = onlineUser.filter((user)=>user.socketId !== socketId);
+}
+
+const getUser = (userId) => {    
+    return onlineUser.find((user)=>user.userId === userId);
+}
+
+io.on("connection", (socket)=> {
+    socket.on("newUser", (userId)=>{
+        addUser(userId, socket.id);            
+    })
+
+    socket.on("sendMessage", ({receiverId, data}) => {
+        const receiver = getUser(receiverId);
+        io.to(receiver?.socketId).emit("getMessage", data);
+        
+    })
+
+    socket.on("disconnect",() => {
+        removeUser(socket.id);
+    })
 })
