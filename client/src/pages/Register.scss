@@ -1,3 +1,5 @@
+@import '../responsive.scss';
+
 .register {
   height: 100%;
   display: flex;
@@ -64,6 +66,9 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    @include md{
+      display: none;
+  }
     img {
       width: 100%;
       position: absolute;

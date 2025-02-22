@@ -1,6 +1,15 @@
+@import '../../responsive.scss';
+
 .card{
     display: flex;
     gap: 20px;
+    background-color: rgb(234, 230, 230);
+    padding: 1rem;
+    border-radius: 0.5rem;
+
+    @include md{
+        flex-direction: column;
+    }
 
     .imageContainer{
         flex: 2;

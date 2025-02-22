@@ -1,55 +1,83 @@
-.filter{
+.filter {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding: 10px;
 
-    h1{
+    h1 {
         font-weight: 300;
         font-size: 24px;
+        text-align: center;
     }
-    .item{
+
+    .top, .bottom {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .item {
         display: flex;
         flex-direction: column;
-        gap: 2px;
+        gap: 5px;
+        width: 100%; // Full width for smaller screens
 
-        label{
+        label {
             font-size: 12px;
+            font-weight: 500;
         }
 
-        input,select{
-            width: 85px;
+        input, select {
+            width: 100%;
             padding: 10px;
             border: 1px solid #e0e0e0;
             border-radius: 5px;
             font-size: 14px;
         }
     }
-    .top{
-        input{
-            width: 100%;
-        }
-    }
-    .bottom{
-        display: flex;
-        justify-content: space-between;
-        gap: 20px;
 
-        button{
+    .bottom {
+        justify-content: space-between;
+
+        button {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 60px;
-            // height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             padding: 8px;
             border: none;
             cursor: pointer;
             background-color: #fece51;
+            transition: all 0.3s ease-in-out;
 
-            .searchIcon{
+            &:hover {
+                background-color: #fdb933;
+            }
+
+            .searchIcon {
                 height: 24px;
                 width: 24px;
             }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .bottom {
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .item {
+            width: 90%; // Slightly reduced width for mobile
+        }
+
+        button {
+            width: 55px;
+            height: 55px;
         }
     }
 }

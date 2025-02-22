@@ -70,7 +70,7 @@ if (process.env.NODE_ENV === 'production') {
 const io = require('socket.io')(server, {
     pingTimeout: 60000,
     cors: {
-        origin:'http://localhost:4000'
+        origin:process.env.CLIENT_URL
     }
 });
 

@@ -5,7 +5,7 @@ import { fadeIn } from '../../variants'
 
 function List({myposts,mysavedposts}){
   return (
-    <div>
+    <div className='list'>
       {
         myposts?(
           myposts?.map((post)=>(
@@ -17,7 +17,8 @@ function List({myposts,mysavedposts}){
                 once:false,
                 amount:0
             }}
-            key={post?._id}>
+            key={post?._id}
+            className='cards'>
               <Card post={post}></Card>
             </motion.div>
           ))

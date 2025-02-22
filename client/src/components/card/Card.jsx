@@ -87,7 +87,7 @@ const Card = ({post}) => {
   return (
     <div className='card'>
       <Link to={`/list/${post._id}`} className='imageContainer'>
-        <img src={post.img ||dummy}></img>
+        <img src={post?.images[0] ||dummy}></img>
       </Link>
       <div className="textContainer">
         <h2 className='title'>
