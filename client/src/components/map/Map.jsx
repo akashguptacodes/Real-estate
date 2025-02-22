@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import {MapContainer, TileLayer, useMap} from 'react-leaflet';
 import './Map.scss';
-import 'leaflet/dist/leaflet.css';
+import "leaflet/dist/leaflet.css";
+
 import Pin from '../pin/Pin';
 
 
