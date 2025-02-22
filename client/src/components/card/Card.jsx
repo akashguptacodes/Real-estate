@@ -23,7 +23,6 @@ const Card = ({post}) => {
       setSaved(!saved);
       if(currentUser){
         const savePost = await apiRequest.post(`api/v1/user/savepost/${post?._id}`);
-        console.log(savePost);
         window.location.reload()
       }
       else{

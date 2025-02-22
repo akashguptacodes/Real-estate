@@ -20,9 +20,7 @@ function ProfilePage() {
 
   const logoutHandler = async () => {
     try{
-      const res = await apiRequest.post('/api/v1/auth/logout');
-      console.log(apiRequest);
-      
+      const res = await apiRequest.post('/api/v1/auth/logout');      
       updateUser(null);
       toast.success('Logged out successfully')
       navigate('/')

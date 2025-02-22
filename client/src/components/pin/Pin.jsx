@@ -9,8 +9,6 @@ import markerShadow from "leaflet/dist/images/marker-shadow.png";
 
 
 const Pin = ({item}) => {
-  console.log('item' , item);
-  console.log('marker' , Marker);
   const customIcon = new L.Icon({
     iconUrl: markerIcon,
     shadowUrl: markerShadow,
