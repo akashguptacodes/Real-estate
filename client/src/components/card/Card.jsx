@@ -86,27 +86,27 @@ const Card = ({post}) => {
   },[]);
   return (
     <div className='card'>
-      <Link to={`/list/${post._id}`} className='imageContainer'>
+      <Link to={`/list/${post?._id}`} className='imageContainer'>
         <img src={post?.images[0] ||dummy}></img>
       </Link>
       <div className="textContainer">
         <h2 className='title'>
-          <Link to={`/list/${post._id}`}>{post.title}</Link>
+          <Link to={`/list/${post?._id}`}>{post?.title}</Link>
         </h2>
         <p className='address'>
           <img src={pin}></img>
-          <span>{post.address}</span>
+          <span>{post?.address}</span>
         </p>
-        <p className='price'>${post.price}</p>
+        <p className='price'>${post?.price}</p>
         <div className="bottom">
           <div className="features">
             <div className="feature">
               <img src={bed}></img>
-              <span>{post.bedroom} bedroom</span>
+              <span>{post?.bedroom} bedroom</span>
             </div>
             <div className="feature">
               <img src={bath}></img>
-              <span>{post.bathroom} bathroom</span>
+              <span>{post?.bathroom} bathroom</span>
             </div>
           </div>
           <div className="icons">

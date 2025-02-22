@@ -10,6 +10,8 @@ import { useNotificationStore } from "../../notificationStore";
 
 
 function Chat({chats}) {
+  console.log(chats);
+  
   const [chat, setChat] = useState(null);
   const { currentUser } = useContext(AuthContext);  
   const { socket } = useContext(SocketContext);
@@ -115,7 +117,7 @@ function Chat({chats}) {
         <h1>Messages</h1>
         {
           chats?.map((c) => (
-            <div className="message" key={c._id}
+            <div className="message" key={c?._id}
               style={{
         
                 backgroundColor: c?.seenBy.includes(currentUser?._id) || chat?._id === c._id ? "white" : "#4fed5c",

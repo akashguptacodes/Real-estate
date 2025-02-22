@@ -3,42 +3,43 @@ const Message  =require('../models/MessageSchema');
 const User = require('../models/User');
 const mongoose = require('mongoose')
 
-exports.getChats = async (req,res) => {
- try{
-    const tokenUserId = req.user.id;
-    const chats = await Chat.find({
-        users: tokenUserId,
-    }).lean();
-    for (const chat of chats) {
-        const receiverId = chat.users.find((id) => id.toString() !== tokenUserId.toString());
-    
-        if (receiverId) {
-            const receiver = await User.findById(receiverId).select({
-                _id:true,
-                userName:true,
-                image:true
-            });
-            chat.receiver = receiver;
-        }
-    }
-    
-    if(chats){
+exports.getChats = async (req, res) => {
+    try {
+        const tokenUserId = req.user.id;
+        
+        // Fetch chats as plain objects
+        const chats = await Chat.find({
+            users: tokenUserId,
+        }).lean();
+
+        // Use Promise.all to fetch receiver details in parallel
+        const updatedChats = await Promise.all(
+            chats.map(async (chat) => {
+                const receiverId = chat.users.find((id) => id.toString() !== tokenUserId.toString());
+                
+                if (receiverId) {
+                    const receiver = await User.findById(receiverId).select("_id userName image");
+                    return { ...chat, receiver };  // Return a new object including receiver
+                }
+                return chat;
+            })
+        );
+
         res.status(200).json({
-            success:true,
-            chats: chats,
-            message:'Fetched all chats'
+            success: true,
+            chats: updatedChats,
+            message: 'Fetched all chats'
+        });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            message: "Error fetching chats"
         });
     }
+};
 
- }
- catch(error){
-    console.log(error);
-    res.status(500).json({
-        success:false,
-        message:"Error fetching chats"
-    })
- }
-}
 
 
 exports.getChat = async (req,res) => {

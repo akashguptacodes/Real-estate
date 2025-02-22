@@ -8,7 +8,7 @@ function NewPostPage() {
   const [value, setValue] = useState("");
   const [images, setImages] = useState([]);
   const [error, setError] = useState("");
-
+  const [isLoading,setIsLoading] = useState(false);
   const navigate = useNavigate()
 
   const handleFileChange = (e) => {
@@ -21,54 +21,10 @@ function NewPostPage() {
     }
   }
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const formData = new FormData(e.target);
-  //   const inputs = Object.fromEntries(formData);
-  //   const postId = Date.now();
-
-  //   try {
-  //     const res = await apiRequest.post("/posts/addpost", 
-  //       {
-  //         postId:postId,
-  //         title: inputs.title,
-  //         price: parseInt(inputs.price),
-  //         address: inputs.address,
-  //         city: inputs.city,
-  //         bedroom: parseInt(inputs.bedroom),
-  //         bathroom: parseInt(inputs.bathroom),
-  //         Type: inputs.type,
-  //         Property: inputs.property,
-  //         latitude: inputs.latitude,
-  //         longitude: inputs.longitude,
-  //         images: images,
-  //         postDetails: {
-  //           description: value,
-  //           utilities: inputs.utilities,
-  //           pet: inputs.pet,
-  //           income: inputs.income,
-  //           size: parseInt(inputs.size),
-  //           school: parseInt(inputs.school),
-  //           bus: parseInt(inputs.bus),
-  //           restaurant: parseInt(inputs.restaurant),
-  //       },
-  //     },
-  //     {headers: {
-  //       "Content-Type": "multipart/form-data", // Make sure you're sending the correct content type
-  //     },}
-  //   );
-  //     console.log(res);
-  //     const unique = await res?.data?.data?._id;
-  //     navigate("/list/"+unique)
-  //   } catch (err) {
-  //     console.log(err);
-  //     setError(error);
-  //   }
-  // };
-
   
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const formData = new FormData();
     const inputs = Object.fromEntries(new FormData(e.target));
     const postId = Date.now();
@@ -114,6 +70,9 @@ function NewPostPage() {
       console.log(err);
       toast.error('Error creating post')
       setError(err.message || "Something went wrong");
+    }
+    finally{
+      setIsLoading(false);
     }
   };
   
@@ -184,7 +143,6 @@ function NewPostPage() {
               <select name="utilities">
                 <option value="owner">Owner is responsible</option>
                 <option value="tenant">Tenant is responsible</option>
-                <option value="shared">Shared</option>
               </select>
             </div>
             <div className="item">
@@ -219,7 +177,7 @@ function NewPostPage() {
               <label htmlFor="restaurant">Restaurant (distance in m)</label>
               <input min={0} id="restaurant" name="restaurant" type="number" />
             </div>
-            <button className="sendButton">Add</button>
+            <button className="sendButton" disabled={isLoading}>Add Post</button>
             {error && <span>{error}</span>}
           </form>
         </div>
