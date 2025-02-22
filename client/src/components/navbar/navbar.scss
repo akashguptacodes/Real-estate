@@ -86,6 +86,12 @@ nav {
         cursor: pointer;
         border-radius: 5px;
         font-size: 14px;
+        @include sm {
+          display: none;
+        }
+        @include md {
+          display: none;
+        }
 
         .notification {
           position: absolute;
@@ -146,6 +152,7 @@ nav {
     .menuIcon {
       display: none;
       cursor: pointer;
+      margin-left: 1rem;
 
       img {
         width: 32px;

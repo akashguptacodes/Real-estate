@@ -13,7 +13,7 @@ function Navbar() {
   const { currentUser } = useContext(AuthContext);
   const fetch = useNotificationStore((state) => state.fetch);
   const number = useNotificationStore((state) => state.number);
-  
+
   if (currentUser) fetch();
 
   useEffect(() => {
@@ -65,7 +65,7 @@ function Navbar() {
             <Link to='/register' className="register">Sign up</Link>
           </div>
         )}
-        
+
         <div className="menuIcon">
           <img
             src={menu}
@@ -82,8 +82,16 @@ function Navbar() {
           <Link to='/' onClick={() => setOpen(false)}>About</Link>
           <Link to='/' onClick={() => setOpen(false)}>Contact</Link>
           <Link to='/' onClick={() => setOpen(false)}>Agents</Link>
-          <Link to='/login' onClick={() => setOpen(false)}>Sign in</Link>
-          <Link to='/register' onClick={() => setOpen(false)}>Sign up</Link>
+          {
+            currentUser ? ('') : (
+              <>
+                <Link to='/login' onClick={() => setOpen(false)}>Sign in</Link>
+                <Link to='/register' onClick={() => setOpen(false)}>Sign up</Link>
+              </>
+
+
+            )
+          }
         </div>
       </div>
     </nav>
