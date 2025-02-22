@@ -144,7 +144,7 @@ nav {
         }
       }
 
-      @include md {
+      @include sm {
         display: none;
       }
     }
