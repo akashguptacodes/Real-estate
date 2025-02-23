@@ -164,6 +164,8 @@ function Chat({chats}) {
                   style={{
                     alignSelf: message.userId === currentUser._id ? "flex-end" : "flex-start",
                     textAlign: message.userId === currentUser._id ? "right" : "left",
+                    backgroundColor: message.userId === currentUser._id ? "#99ff66" : "white",
+
                   }}>
                   <p>{message?.text}</p>
                   <span>{format(message?.createdAt)}</span>

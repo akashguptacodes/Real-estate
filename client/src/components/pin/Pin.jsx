@@ -19,14 +19,14 @@ const Pin = ({item}) => {
   
   
   return (
-        <Marker position={[item.latitude, item.longitude]} icon={customIcon}>
+        <Marker position={[item?.latitude, item?.longitude]} icon={customIcon}>
           <Popup>
             <div className="popupContainer">
-                <img src={item.img}></img>
+                <img src={item?.images[0]}></img>
                 <div className="textContainer">
-                    <Link to={`/list/${item._id}`} >{item.title}</Link>
-                    <span className='bed'>{item.bedroom} bedroom</span>
-                    <b>$ {item.price}</b>
+                    <Link to={`/list/${item?._id}`} >{item.title}</Link>
+                    <span className='bed'>{item?.bedroom} bedroom</span>
+                    <b>$ {item?.price}</b>
                 </div>
             </div>
           </Popup>

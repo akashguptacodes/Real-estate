@@ -10,18 +10,21 @@
     gap: 10px;
     overflow-y: scroll;
 
+
     h1 {
       font-weight: 300;
     }
 
     .message {
-      background-color: white;
+      background-color: rgb(255, 255, 255);
       padding: 10px;
       border-radius: 10px;
       display: flex;
       align-items: center;
       gap: 20px;
       cursor: pointer;
+      border: 2px solid gray;
+
 
       img {
         width: 30px;
@@ -33,6 +36,8 @@
       span {
         font-weight: 600;
         font-size: 0.9rem;
+        border-right: 2px solid rgb(152, 144, 144);
+        padding-right: 1rem;
       }
       p{
         font-size: 0.8rem;
@@ -46,14 +51,18 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border: 2px solid rgb(183, 181, 181);
+    border-radius: 0.5rem;
 
     .top {
-      background-color: #f7c14b85;
+      background-color: #f6ac0dcb;
       padding: 20px;
       font-weight: bold;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
 
       .user {
         display: flex;
@@ -73,56 +82,60 @@
     }
     .center {
       height: 220px;
-      overflow: scroll;
       padding: 10px;
       display: flex;
       flex-direction: column;
       gap: 10px;
+      background-color: #ffdb8ccb;
 
       .chatMessage{
         width: 50%;
+        padding: 0.2rem 0.2rem;
+        border-radius: 0.4rem;
 
         &.own{
           align-self: flex-end;
           text-align: right;
+          background-color: green;
         }
 
         p{
           font-size: 14px;
+          padding: 0 0.5rem;
         }
 
         span{
           font-size: 10px;
           background-color: #f7c14b39;
-          padding: 2px;
+          padding: 0 0.5rem;
           border-radius: 5px;
         }
       }
     }
     .bottom {
       border-top: 2px solid #f7c14b85;
-      height: 45px;
+      height: 3.3rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      // gap: 0.5rem;
       textarea{
-        width: 75%;
-        height: 100%;
+        width: 74%;
         border: none;
+        font-size: 1rem;
+        padding: 0.4rem;
+        border: 2px solid rgb(189, 188, 188);
+        border-radius: 0.5rem;
       }
       .mike{
-        // flex:1;
         background-color: #f7c14b85;
         height: 100%;
-        width: 10%;
+        width: 12%;
         border-radius: 50%;
         border: 1px solid rgb(122, 122, 221);
         cursor: pointer;
       }
 
       button{
-        // flex:1;
         background-color: #f7c14b85;
         height: 100%;
         width: 10%;
