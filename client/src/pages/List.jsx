@@ -26,7 +26,9 @@ function ListPage() {
   // Extract query parameters from the URL
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
-    const type = searchParams.get("type") || "buy";
+    const type = searchParams.get("type") || null;
+    console.log(type);
+    
     const city = searchParams.get("city") ||null;
     const property = searchParams.get("property") ||null;
     const minPrice = Number(searchParams.get("minPrice")) || 0;
@@ -43,6 +45,7 @@ function ListPage() {
         prevQuery.bedroom !== bedroom ||
         prevQuery.property !== property
       ) {
+        console.log(prevQuery.property);
         return { type, city, minPrice,property, maxPrice,bedroom };
       }
       return prevQuery;
@@ -63,13 +66,7 @@ function ListPage() {
       }
       setLoading(false)
     };
-
-    // Fetch posts only if the query is populated
-    if (query.type ) {
-      console.log(query.type);
-      
       fetchPosts();
-    }
   }, [query]);
 console.log(posts);
 

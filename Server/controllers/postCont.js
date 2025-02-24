@@ -13,7 +13,8 @@ exports.getPosts = async (req, res) => {
 
     try {
         const query = {
-            Type: type,
+            // Type: type,
+            ...(type && type !== "" ? { Type: type } : {}),
             ...(city ? { city: city } : {}),
             ...(property ? { Property: property } : {}),
             ...(minPrice || maxPrice
@@ -27,7 +28,7 @@ exports.getPosts = async (req, res) => {
             ...(bedroom ? { bedroom: { $gte: parseInt(bedroom) } } : {}),
         };
         
-        console.log(query); // Log the query to debug
+        console.log({query}); // Log the query to debug
         const posts = await Posts.find(query);
 
         if (posts.length === 0) {

@@ -35,7 +35,7 @@ const SearchBar = () => {
             }
         </div>
         <form>
-            <input type="text" name='city' placeholder='City' required onChange={handleChange}/>
+            <input type="text" name='city' placeholder='City (lowerCase)' required onChange={handleChange}/>
             <input type="number" name='minPrice' required min={0} max={10000000} placeholder='Min Price' onChange={handleChange}/>
             <input type="number" name='maxPrice' required min={0} max={10000000} placeholder='Max Price' onChange={handleChange}/>
             <Link to={`/list?type=${query.type}&city=${query.city}&minPrice=${query.minPrice}&maxPrice=${query.maxPrice}`}>
