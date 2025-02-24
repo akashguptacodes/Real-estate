@@ -87,6 +87,7 @@
       flex-direction: column;
       gap: 10px;
       background-color: #ffdb8ccb;
+      overflow-y: auto;
 
       .chatMessage{
         width: 50%;
